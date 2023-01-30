@@ -12,6 +12,10 @@ function Dropdown(props: any) {
       setShow('');
     }
   }
+
+  function closeDropdownHandler() {
+    setShow('');
+  }
   
   return (
     <div className="dropdown">
@@ -19,7 +23,8 @@ function Dropdown(props: any) {
         className="btn btn-sm btn-tertiary"
         type="button"
         aria-expanded="false"
-        onClick={toggleDropdownHandler}>
+        onClick={toggleDropdownHandler}
+        onBlur={closeDropdownHandler}>
         <MoreVerticalIcon />
       </button>
       <ul className={`dropdown-menu ${show}`}>{props.children}</ul>

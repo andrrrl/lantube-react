@@ -42,15 +42,14 @@ export default function App() {
     return (
       <main className="container">
         <h1>Lantube React!</h1>
-
         <p>LAN youtube player</p>
           <p>Socket connected: {"" + isConnected}</p>
           <PlayerStats stats={stats}></PlayerStats>
+          <Player stats={stats} />
         <Router>
           <MainNavigation />
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Player stats={stats} />} />
               <Route path="search" element={<Search />} />
               <Route path="videos" element={<Videos stats={stats} />} />
               <Route path="*" element={<NoMatch />} />

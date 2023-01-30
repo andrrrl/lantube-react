@@ -63,9 +63,6 @@ function Videos(props: any) {
         <div className="col">
           <h2>Videos</h2>
           <div>
-            <Player stats={stats}></Player>
-          </div>
-          <div>
             <ul className={classes.videoList}>
               {videos
                 .map((video: Video) => (
