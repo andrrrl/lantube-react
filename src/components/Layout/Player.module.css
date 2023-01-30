@@ -1,0 +1,5 @@
+.player {
+    display: grid;
+    grid-template-columns: repeat(6, 40px);
+    gap: 4px;
+}

@@ -1,0 +1,32 @@
+body {
+    --blink-color-1: rgb(172, 49, 109);
+    --blink-color-2: rgb(47, 113, 185);
+}
+
+.videoList {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+}
+.videoItem {
+    display: grid;
+    grid-template-columns: 50px 1fr 50px 50px;
+    padding: 5px 0;
+    border-bottom: 1px solid gray;
+}
+
+.blink {
+    animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0% {
+        color: var(--blink-color-1);
+    }
+    50% {
+        color: var(--blink-color-2);
+    }
+    100% {
+        color: var(--blink-color-1);
+    }
+}
