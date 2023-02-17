@@ -11,8 +11,16 @@ body {
 .videoItem {
     display: grid;
     grid-template-columns: 50px 1fr 50px 50px;
-    padding: 5px 0;
+    padding: 5px;
     border-bottom: 1px solid gray;
+    grid-template-areas: "thumb title playback menu";
+    gap: 5px;
+}
+
+.dropdown {
+    grid-area: menu;
+    align-items: center;
+    justify-self: center;
 }
 
 .blink {
@@ -21,12 +29,12 @@ body {
 
 @keyframes blink {
     0% {
-        color: var(--blink-color-1);
+        background-color: var(--blink-color-1);
     }
     50% {
-        color: var(--blink-color-2);
+        background-color: var(--blink-color-2);
     }
     100% {
-        color: var(--blink-color-1);
+        background-color: var(--blink-color-1);
     }
 }

@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { DeleteVideo, GetVideos } from "../../services/VideosService";
-import Player from "../../components/Layout/Player";
+import { useEffect, useState, useContext, useCallback } from "react";
+import VideosContext from "../../store/videos-context";
 import VideoItem from "./VideoItem";
 import classes from "./Videos.module.css";
-import { Video } from "../../interfaces/Video";
 import Backdrop from "../../ui/Backdrop";
 import Modal from "../../ui/Modal";
+import { Video } from "../../interfaces/Video";
 
 function Videos(props: any) {
+  const videosCtx = useContext(VideosContext);
   const stats = props.stats;
 
   const [error, setError] = useState(null);
@@ -16,16 +16,16 @@ function Videos(props: any) {
   const [showModal, setShowModal] = useState(false);
   const [deleteVideo, setDeleteVideo] = useState({});
 
-  async function retrieveVideos() {
+  const retrieveVideos = useCallback(async () => {
     try {
-      const result: any = await GetVideos();
+      const result: any = await videosCtx.getVideos();
       setIsLoaded(true);
       setVideos(result);
     } catch (error: any) {
       setIsLoaded(true);
       setError(error);
     }
-  }
+  }, [videosCtx]);
 
   useEffect(() => {
     retrieveVideos();
@@ -48,7 +48,7 @@ function Videos(props: any) {
   }
 
   async function deleteHandler(id: string) {
-    await DeleteVideo(id);
+    await videosCtx.deleteVideo(id);
     setShowModal(false);
     retrieveVideos();
   }
@@ -61,17 +61,21 @@ function Videos(props: any) {
     return (
       <div className="row">
         <div className="col">
-          <h2>Videos</h2>
+          <h2 className="text-light">Videos</h2>
           <div>
             <ul className={classes.videoList}>
               {videos
                 .map((video: Video) => (
                   <li
                     key={video.videoId}
-                    className={`${classes.videoItem} ${classes[nowPlaying(video.videoId)]}`}>
+                    className={`${classes.videoItem} ${
+                      classes[nowPlaying(video.videoId)] || ""
+                    }`}
+                  >
                     <VideoItem
                       video={video}
-                      onDeleteModal={() => showModalHandler(video)} />
+                      onDeleteModal={() => showModalHandler(video)}
+                    />
                   </li>
                 ))
                 .reverse()}

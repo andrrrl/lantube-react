@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { SearchVideos } from "../../services/VideosService";
+import { useContext, useState } from "react";
+import { Video } from "../../interfaces/Video";
+import ToastContext from "../../store/toast-context";
+import VideosContext from "../../store/videos-context";
 import SearchResults from "./SearchResults";
 
 function Search() {
@@ -8,24 +10,37 @@ function Search() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
+  const videosCtx = useContext(VideosContext);
+  const toastCtx = useContext(ToastContext);
 
   function handleTerm(event: any) {
     setTerm(event.target.value);
   }
 
-  async function handleSearch(event: any) {
+  function handleSearch(event: any) {
     event.preventDefault();
+
     setIsSearching(true);
     try {
-      const result = await SearchVideos(term);
-      setIsLoaded(true);
-      setResults(result);
-      setIsSearching(false);
+      videosCtx.searchVideos(term).then((result: any) => {
+        setIsLoaded(true);
+        setResults(result);
+        setIsSearching(false);
+
+      });
     } catch (error: any) {
       setIsLoaded(true);
       setError(error);
       setIsSearching(false);
     }
+  }
+
+  function onAddHandler(video: any) {
+    toastCtx.showToast({
+      title: 'Video Added!',
+      subtitle: `Duration: ${video.duration}`,
+      body: `Title: ${video.title}`
+    });
   }
 
   if (error) {
@@ -34,7 +49,7 @@ function Search() {
     return <div>Loading...</div>;
   } else {
     return (
-      <div>
+      <div className="text-light">
         <h2>Search & Add</h2>
         <form className="form" onSubmit={(e: any) => handleSearch(e)}>
           <div className="row">
@@ -64,7 +79,7 @@ function Search() {
         </form>
         {isSearching && <div className="searching">Searching...</div>}
         {isLoaded && results && (
-          <SearchResults videos={results}></SearchResults>
+          <SearchResults videos={results} onAdded={(video: Video) => onAddHandler(video)}></SearchResults>
         )}
       </div>
     );

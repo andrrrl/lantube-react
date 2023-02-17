@@ -1,5 +1,5 @@
 import { Trash as TrashIcon } from 'react-feather';
-import Button from '../../../ui/Button';
+import Button from '../../ui/Button';
 
 function Delete(props: any) {
     return (

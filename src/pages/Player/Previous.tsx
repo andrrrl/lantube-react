@@ -1,5 +1,5 @@
 import { SkipBack as PreviousIcon } from "react-feather";
-import Button from "../../../ui/Button";
+import Button from "../../ui/Button";
 
 function Previous(props: any) {
   function onPreviousHandler() {

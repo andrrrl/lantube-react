@@ -1,25 +1,48 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import classes from './MainNavigation.module.css';
+import Player from "./Player";
+const tocadiscos = require('../../assets/img/lantube-tocadiscos.png');
 
-type Props = {};
+function MainNavigation(props: any) {
 
-function MainNavigation({}: Props) {
+  const [activeRoute, setActiveRoute] = useState('home');
+
   return (
-    <header className="w-25">
-        <nav className="nav d-flex justify-content-between">
-          <span className="nav-item">
-            <Link to={"/"}>Home</Link>
-          </span>
-          <span className="nav-item">
-            <Link to={"videos"}>Videos</Link>
-          </span>
-          <span className="nav-item">
-            <Link to={"search"}>Search</Link>
-          </span>
-          <span className="nav-item">
-            <Link to="/nothing-here">Nothing Here</Link>
-          </span>
-        </nav>
+    <header>
+      <nav className="navbar navbar-expand navbar-light bg-light rounded-bottom">
+        <div className="container-fluid">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <div className="d-flex flex-column align-items-center me-5">
+              <img className={classes.logoBrand} src={tocadiscos} alt="Tocadiscos Lantube" />
+              <small>Lantube</small>
+            </div>
+            <ul className="navbar-nav me-auto mb-2 mb-0">
+              <li className="nav-item">
+                <Link to={"/home"} className="nav-link">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"videos"} className="nav-link">
+                  Videos
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"search"} className="nav-link">
+                  Search
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/stats" className="nav-link">
+                  Stats
+                </Link>
+              </li>
+            </ul>
+            <Player stats={props.stats} />
+          </div>
+        </div>
+      </nav>
     </header>
   );
 }

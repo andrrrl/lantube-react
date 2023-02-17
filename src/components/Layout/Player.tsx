@@ -1,38 +1,39 @@
 import classes from './Player.module.css';
-import PlayPause from "../../pages/Videos/Player/PlayPause";
-import Next from "../../pages/Videos/Player/Next";
-import Previous from "../../pages/Videos/Player/Previous";
-import Stop from "../../pages/Videos/Player/Stop";
-import VolumeControl from "../../pages/Videos/Player/VolumeControl";
-import { GetNextVideoAndPlay, GetPrevVideoAndPlay, StopPlayback, TogglePause, Volume } from "../../services/VideosService";
-
-function stopHandler() {
-  StopPlayback();
-}
-
-function togglePauseHandler() {
-  TogglePause();
-}
-
-function prevHandler() {
-  GetPrevVideoAndPlay();
-}
-
-function nextHandler() {
-  GetNextVideoAndPlay();
-}
-
-function volumeDownHandler() {
-  Volume('down');
-}
-
-function volumeUpHandler() {
-  Volume('up');
-}
+import PlayPause from "../../pages/Player/PlayPause";
+import Next from "../../pages/Player/Next";
+import Previous from "../../pages/Player/Previous";
+import Stop from "../../pages/Player/Stop";
+import VolumeControl from "../../pages/Player/VolumeControl";
+import { useContext } from 'react';
+import VideosContext from '../../store/videos-context';
 
 function Player(props: any) {
-
+  const videosCtx = useContext(VideosContext);
   const stats = props.stats;
+
+  function stopHandler() {
+    videosCtx.stopPlayback();
+  }
+  
+  function togglePauseHandler() {
+    videosCtx.togglePause();
+  }
+  
+  function prevHandler() {
+    videosCtx.getPrevVideoAndPlay();
+  }
+  
+  function nextHandler() {
+    videosCtx.getNextVideoAndPlay();
+  }
+  
+  function volumeDownHandler() {
+    videosCtx.volume('down');
+  }
+  
+  function volumeUpHandler() {
+    videosCtx.volume('up');
+  }
   
   return (
     <div className={classes.player}>

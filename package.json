@@ -28,8 +28,8 @@
     "typescript": "^4.9.4",
     "typescript-plugin-css-modules": "^4.1.1"
   },
-  "proxy": "http://192.168.4.53:3000",
-  "proxy_local": "http://localhost:3000",
+  "proxy_pi": "http://192.168.4.55:3000",
+  "proxy": "http://localhost:3000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

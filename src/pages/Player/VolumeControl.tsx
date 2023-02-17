@@ -2,7 +2,7 @@ import {
   Volume1 as VolumeDownIcon,
   Volume2 as VolumeUpIcon,
 } from "react-feather";
-import Button from "../../../ui/Button";
+import Button from "../../ui/Button";
 
 function VolumeControl(props: any) {
   function onVolumeDown() {
