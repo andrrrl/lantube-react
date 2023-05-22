@@ -40,7 +40,7 @@ function Search() {
       title: 'Video Added!',
       subtitle: `Duration: ${video.duration}`,
       body: `Title: ${video.title}`
-    });
+    }, 6000);
   }
 
   if (error) {

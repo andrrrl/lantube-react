@@ -11,9 +11,14 @@ export function ToastContextProvider(props: any) {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  function showToast(toastData: any) {
+  function showToast(toastData: any, tiemoutMilliseconds: number = 4000) {
     setToast(toastData);
     setIsOpen(true);
+    if(tiemoutMilliseconds) {
+      setTimeout(() => {
+        setIsOpen(false);
+      }, tiemoutMilliseconds);
+    }
   }
 
   function hideToast() {

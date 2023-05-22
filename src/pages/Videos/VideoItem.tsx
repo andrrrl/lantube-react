@@ -20,7 +20,7 @@ function VideoItem(props: any) {
       toastCtx.showToast({
         title: "Lantube message",
         subtitle: `Playback started!`,
-        body: `${res.video.videoInfo.title}`,
+        body: `${res.video.title}`,
       });
       setLoading(false);
     });

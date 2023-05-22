@@ -10,8 +10,8 @@ import { useState, useEffect } from "react";
 import PlayerStats from "./components/Layout/PlayerStats";
 import Toast from "./ui/Toast";
 
-// const socket = io("http://192.168.4.55:3000/");
-const socket = io("http://localhost:3000/");
+const socket = io("http://192.168.4.54:3000/");
+// const socket = io("http://localhost:3000/");
 
 
 export default function App() {
@@ -40,7 +40,7 @@ export default function App() {
     };
   }, []);
 
-  if ((stats as any).player as any) {
+  if ((stats as any).status as any) {
     return (
       <>
       <main className="container">
