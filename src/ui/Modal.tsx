@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Button from "./Button";
-import './Modal.css';
+import "./Modal.css";
 
 function Modal(props: any) {
   const [isHidden, setIsHidden] = useState(true);

@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import classes from './MainNavigation.module.css';
+import classes from "./MainNavigation.module.css";
 import Player from "./Player";
-const tocadiscos = require('../../assets/img/lantube-tocadiscos.png');
+const tocadiscos = require("../../assets/img/lantube-tocadiscos.png");
 
 function MainNavigation(props: any) {
-
-  const [activeRoute, setActiveRoute] = useState('home');
+  const [activeRoute, setActiveRoute] = useState("home");
 
   return (
     <header>
@@ -14,7 +13,11 @@ function MainNavigation(props: any) {
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <div className="d-flex flex-column align-items-center me-5">
-              <img className={classes.logoBrand} src={tocadiscos} alt="Tocadiscos Lantube" />
+              <img
+                className={classes.logoBrand}
+                src={tocadiscos}
+                alt="Tocadiscos Lantube"
+              />
               <small>Lantube</small>
             </div>
             <ul className="navbar-nav me-auto mb-2 mb-0">

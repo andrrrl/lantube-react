@@ -5,7 +5,9 @@ function Home() {
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div className="row">
         <div className="col d-flex">
-          <div className="text-light">Lantube is an in-site collaborative player.</div>
+          <div className="text-light">
+            Lantube is an in-site collaborative player.
+          </div>
         </div>
       </div>
       <div className="row">

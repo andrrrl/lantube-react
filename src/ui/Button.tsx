@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 function Button(props: any) {
-
-  const btn = 'btn';
-  const [size, setSize] = useState('md');
-  const [type, setType] = useState('success');
+  const btn = "btn";
+  const [size, setSize] = useState("md");
+  const [type, setType] = useState("success");
 
   useEffect(() => {
     setSize(props.size);

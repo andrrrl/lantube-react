@@ -26,7 +26,6 @@ function Search() {
         setIsLoaded(true);
         setResults(result);
         setIsSearching(false);
-
       });
     } catch (error: any) {
       setIsLoaded(true);
@@ -36,11 +35,14 @@ function Search() {
   }
 
   function onAddHandler(video: any) {
-    toastCtx.showToast({
-      title: 'Video Added!',
-      subtitle: `Duration: ${video.duration}`,
-      body: `Title: ${video.title}`
-    }, 6000);
+    toastCtx.showToast(
+      {
+        title: "Video Added!",
+        subtitle: `Duration: ${video.duration}`,
+        body: `Title: ${video.title}`,
+      },
+      6000
+    );
   }
 
   if (error) {
@@ -79,7 +81,10 @@ function Search() {
         </form>
         {isSearching && <div className="searching">Searching...</div>}
         {isLoaded && results && (
-          <SearchResults videos={results} onAdded={(video: Video) => onAddHandler(video)}></SearchResults>
+          <SearchResults
+            videos={results}
+            onAdded={(video: Video) => onAddHandler(video)}
+          ></SearchResults>
         )}
       </div>
     );

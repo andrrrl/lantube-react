@@ -13,61 +13,56 @@ import Toast from "./ui/Toast";
 const socket = io("http://192.168.4.54:3000/");
 // const socket = io("http://localhost:3000/");
 
-
 export default function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [stats, setStats] = useState({});
 
   useEffect(() => {
-    
-    socket.on('connect', () => {
+    socket.on("connect", () => {
       setIsConnected(true);
     });
-    
-    socket.on('disconnect', () => {
+
+    socket.on("disconnect", () => {
       setIsConnected(false);
     });
-    
-    socket.on('PLAYER_MESSAGE', (stats) => {
-      console.log({stats});
+
+    socket.on("PLAYER_MESSAGE", (stats) => {
+      console.log({ stats });
       setStats(stats);
     });
 
     return () => {
-      socket.off('connect');
-      socket.off('disconnect');
-      socket.off('pong');
+      socket.off("connect");
+      socket.off("disconnect");
+      socket.off("pong");
     };
   }, []);
 
   if ((stats as any).status as any) {
     return (
       <>
-      <main className="container">
-        
-        {/* <p>Socket connected: {"" + isConnected}</p>
+        <main className="container">
+          {/* <p>Socket connected: {"" + isConnected}</p>
         <PlayerStats stats={stats}></PlayerStats> */}
-        <Router>
-          <MainNavigation stats={stats} />
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              {["/", "/home"].map((path, index) => 
-                <Route path={path} element={<Home />} key={index} />
-              )}
-              <Route path="search" element={<Search />} />
-              <Route path="videos" element={<Videos stats={stats} />} />
-              <Route path="stats" element={<PlayerStats stats={stats} />} />
-              <Route path="*" element={<NoMatch />} />
-            </Route>
-          </Routes>
-        </Router>
-      </main>
-      <Toast />
+          <Router>
+            <MainNavigation stats={stats} />
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                {["/", "/home"].map((path, index) => (
+                  <Route path={path} element={<Home />} key={index} />
+                ))}
+                <Route path="search" element={<Search />} />
+                <Route path="videos" element={<Videos stats={stats} />} />
+                <Route path="stats" element={<PlayerStats stats={stats} />} />
+                <Route path="*" element={<NoMatch />} />
+              </Route>
+            </Routes>
+          </Router>
+        </main>
+        <Toast />
       </>
     );
   } else {
-    return (
-      <div>Connecting...</div>
-    )
+    return <div>Connecting...</div>;
   }
 }

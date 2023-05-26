@@ -15,7 +15,10 @@ function Dropdown(props: any) {
     function closeDropdownHandler(event: any) {
       if (concernedElement.contains(event.target)) {
         setIsOpen(false);
-      } else if (event.target.tagName !== 'svg' && event.target.className !== 'btn btn-sm btn-tertiary toggle-dropdown'){
+      } else if (
+        event.target.tagName !== "svg" &&
+        event.target.className !== "btn btn-sm btn-tertiary toggle-dropdown"
+      ) {
         setIsOpen(false);
       }
     }
@@ -23,7 +26,6 @@ function Dropdown(props: any) {
     if (concernedElement && currentId === concernedElement.getAttribute("id")) {
       document.addEventListener("click", closeDropdownHandler, false);
     }
-    
   }, [props.id, concernedElement, currentId, isOpen]);
 
   function toggleDropdownHandler() {

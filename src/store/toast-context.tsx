@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { useState, createContext } from "react";
 
 const ToastContext = createContext<any | null>(null);
 
@@ -6,7 +6,7 @@ export function ToastContextProvider(props: any) {
   const [toast, setToast] = useState({
     title: props.title,
     subtitle: props.subtitle,
-    body: props.body
+    body: props.body,
   });
 
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +14,7 @@ export function ToastContextProvider(props: any) {
   function showToast(toastData: any, tiemoutMilliseconds: number = 4000) {
     setToast(toastData);
     setIsOpen(true);
-    if(tiemoutMilliseconds) {
+    if (tiemoutMilliseconds) {
       setTimeout(() => {
         setIsOpen(false);
       }, tiemoutMilliseconds);
@@ -29,13 +29,14 @@ export function ToastContextProvider(props: any) {
     toast,
     showToast,
     hideToast,
-    isOpen
+    isOpen,
   };
 
-  return <ToastContext.Provider value={context}>
+  return (
+    <ToastContext.Provider value={context}>
       {props.children}
-  </ToastContext.Provider>
-
+    </ToastContext.Provider>
+  );
 }
 
 export default ToastContext;
