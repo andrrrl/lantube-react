@@ -1,27 +1,27 @@
-import { useEffect, useState } from "react";
-import Button from "./Button";
-import "./Modal.css";
+import { useEffect, useState } from "react"
+import Button from "./Button"
+import "./Modal.css"
 
 function Modal(props: any) {
-  const [isHidden, setIsHidden] = useState(true);
-  const [size, setSize] = useState("sm");
-  const [type, setType] = useState("danger");
+  const [isHidden, setIsHidden] = useState(true)
+  const [size, setSize] = useState("sm")
+  const [type, setType] = useState("danger")
 
   function onCancelHandler() {
-    setIsHidden(true);
-    props.onClose();
+    setIsHidden(true)
+    props.onClose()
   }
 
   function onConfirmHandler() {
-    setIsHidden(true);
-    props.onConfirm();
+    setIsHidden(true)
+    props.onConfirm()
   }
 
   useEffect(() => {
-    setIsHidden(false);
-    setSize(props.size || "sm");
-    setType(props.type || "danger");
-  }, [props.size, props.type]);
+    setIsHidden(false)
+    setSize(props.size || "sm")
+    setType(props.type || "danger")
+  }, [props.size, props.type])
 
   return (
     <div className="modal d-flex" aria-hidden={isHidden}>
@@ -48,7 +48,7 @@ function Modal(props: any) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Modal;
+export default Modal

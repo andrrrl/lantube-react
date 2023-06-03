@@ -1,35 +1,35 @@
-import { useEffect, useRef, useState } from "react";
-import { MoreVertical as MoreVerticalIcon } from "react-feather";
-import "./Dropdown.css";
+import { useEffect, useRef, useState } from "react"
+import { MoreVertical as MoreVerticalIcon } from "react-feather"
+import "./Dropdown.css"
 
 function Dropdown(props: any) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentId, setCurrentId] = useState("dummy");
+  const [isOpen, setIsOpen] = useState(false)
+  const [currentId, setCurrentId] = useState("dummy")
   const concernedElement: HTMLElement | any = document.querySelector(
     `ul li a[id=${currentId}]`
-  );
+  )
 
   useEffect(() => {
-    setCurrentId(props.id);
+    setCurrentId(props.id)
 
     function closeDropdownHandler(event: any) {
       if (concernedElement.contains(event.target)) {
-        setIsOpen(false);
+        setIsOpen(false)
       } else if (
         event.target.tagName !== "svg" &&
         event.target.className !== "btn btn-sm btn-tertiary toggle-dropdown"
       ) {
-        setIsOpen(false);
+        setIsOpen(false)
       }
     }
 
     if (concernedElement && currentId === concernedElement.getAttribute("id")) {
-      document.addEventListener("click", closeDropdownHandler, false);
+      document.addEventListener("click", closeDropdownHandler, false)
     }
-  }, [props.id, concernedElement, currentId, isOpen]);
+  }, [props.id, concernedElement, currentId, isOpen])
 
   function toggleDropdownHandler() {
-    setIsOpen(!isOpen);
+    setIsOpen(!isOpen)
   }
 
   return (
@@ -42,11 +42,9 @@ function Dropdown(props: any) {
       >
         <MoreVerticalIcon />
       </button>
-      <ul className={`dropdown-menu ${isOpen ? "show" : ""}`}>
-        {props.children}
-      </ul>
+      <ul className={`dropdown-menu ${isOpen ? "show" : ""}`}>{props.children}</ul>
     </div>
-  );
+  )
 }
 
-export default Dropdown;
+export default Dropdown

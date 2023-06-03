@@ -1,16 +1,16 @@
-import { useContext, useRef } from "react";
-import ToastContext from "../store/toast-context";
+import { useContext, useRef } from "react"
+import ToastContext from "../store/toast-context"
 
 function Toast(props: any) {
-  const toastCtx = useContext(ToastContext);
-  const toastRef = useRef(null);
+  const toastCtx = useContext(ToastContext)
+  const toastRef = useRef(null)
 
   function showHandler() {
-    toastCtx.showToast();
+    toastCtx.showToast()
   }
 
   function hideHandler() {
-    toastCtx.hideToast();
+    toastCtx.hideToast()
   }
 
   return (
@@ -41,7 +41,7 @@ function Toast(props: any) {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Toast;
+export default Toast

@@ -1,4 +1,4 @@
-const tocadiscos = require("../../assets/img/lantube-tocadiscos.png");
+const tocadiscos = require("../../assets/img/lantube-tocadiscos.png")
 
 function Home() {
   return (
@@ -16,7 +16,7 @@ function Home() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

@@ -1,7 +1,7 @@
 .videoThumb {
-    width: 50px;
-    aspect-ratio: 1 / 1;
-    height: auto;
-    border-radius: 8px;
-    align-self: center;
+  width: 50px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  border-radius: 8px;
+  align-self: center;
 }

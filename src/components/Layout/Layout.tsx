@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom"
 
 function Layout() {
   return (
@@ -12,7 +12,7 @@ function Layout() {
             the child routes we defined above. */}
       <Outlet />
     </div>
-  );
+  )
 }
 
-export default Layout;
+export default Layout

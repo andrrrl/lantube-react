@@ -2,7 +2,7 @@ function PlayerStats(props: any) {
   function isPlaying() {
     return props.stats.status === "playing" || props.stats.status === "paused"
       ? "Now playing"
-      : "Last played";
+      : "Last played"
   }
 
   return (
@@ -13,7 +13,7 @@ function PlayerStats(props: any) {
         {isPlaying()}: {props.stats.videoInfo.title}
       </li>
     </ul>
-  );
+  )
 }
 
-export default PlayerStats;
+export default PlayerStats

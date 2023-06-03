@@ -1,36 +1,36 @@
-import { useContext, useState } from "react";
-import { Video } from "../../interfaces/Video";
-import ToastContext from "../../store/toast-context";
-import VideosContext from "../../store/videos-context";
-import SearchResults from "./SearchResults";
+import { useContext, useState } from "react"
+import { Video } from "../../interfaces/Video"
+import ToastContext from "../../store/toast-context"
+import VideosContext from "../../store/videos-context"
+import SearchResults from "./SearchResults"
 
 function Search() {
-  const [term, setTerm] = useState("");
-  const [results, setResults] = useState(null);
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isSearching, setIsSearching] = useState(false);
-  const videosCtx = useContext(VideosContext);
-  const toastCtx = useContext(ToastContext);
+  const [term, setTerm] = useState("")
+  const [results, setResults] = useState(null)
+  const [error, setError] = useState(null)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [isSearching, setIsSearching] = useState(false)
+  const videosCtx = useContext(VideosContext)
+  const toastCtx = useContext(ToastContext)
 
   function handleTerm(event: any) {
-    setTerm(event.target.value);
+    setTerm(event.target.value)
   }
 
   function handleSearch(event: any) {
-    event.preventDefault();
+    event.preventDefault()
 
-    setIsSearching(true);
+    setIsSearching(true)
     try {
       videosCtx.searchVideos(term).then((result: any) => {
-        setIsLoaded(true);
-        setResults(result);
-        setIsSearching(false);
-      });
+        setIsLoaded(true)
+        setResults(result)
+        setIsSearching(false)
+      })
     } catch (error: any) {
-      setIsLoaded(true);
-      setError(error);
-      setIsSearching(false);
+      setIsLoaded(true)
+      setError(error)
+      setIsSearching(false)
     }
   }
 
@@ -42,13 +42,13 @@ function Search() {
         body: `Title: ${video.title}`,
       },
       6000
-    );
+    )
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>Error: {error}</div>
   } else if (!isLoaded && results) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   } else {
     return (
       <div className="text-light">
@@ -87,8 +87,8 @@ function Search() {
           ></SearchResults>
         )}
       </div>
-    );
+    )
   }
 }
 
-export default Search;
+export default Search

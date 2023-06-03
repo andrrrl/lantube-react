@@ -1,29 +1,29 @@
-import { useContext, useRef, useState } from "react";
-import { Trash as DeleteIcon } from "react-feather";
-import classes from "./Video.module.css";
-import Play from "../Player/Play";
-import Dropdown from "../../ui/Dropdown";
-import VideosContext from "../../store/videos-context";
-import ToastContext from "../../store/toast-context";
-import { Video } from "../../interfaces/Video";
+import { useContext, useRef, useState } from "react"
+import { Trash as DeleteIcon } from "react-feather"
+import classes from "./Video.module.css"
+import Play from "../Player/Play"
+import Dropdown from "../../ui/Dropdown"
+import VideosContext from "../../store/videos-context"
+import ToastContext from "../../store/toast-context"
+import { Video } from "../../interfaces/Video"
 
 function VideoItem(props: any) {
-  const [loading, setLoading] = useState(false);
-  const videosCtx = useContext(VideosContext);
-  const toastCtx = useContext(ToastContext);
-  const video: Video = props.video;
-  const itemRef: any = useRef(null);
+  const [loading, setLoading] = useState(false)
+  const videosCtx = useContext(VideosContext)
+  const toastCtx = useContext(ToastContext)
+  const video: Video = props.video
+  const itemRef: any = useRef(null)
 
   function playHandler(id: string) {
-    setLoading(true);
+    setLoading(true)
     videosCtx.playVideo(id).then((res: any) => {
       toastCtx.showToast({
         title: "Lantube message",
         subtitle: `Playback started!`,
         body: `${res.video.title}`,
-      });
-      setLoading(false);
-    });
+      })
+      setLoading(false)
+    })
   }
 
   return (
@@ -58,7 +58,7 @@ function VideoItem(props: any) {
         </li>
       </Dropdown>
     </>
-  );
+  )
 }
 
-export default VideoItem;
+export default VideoItem

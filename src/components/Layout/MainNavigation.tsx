@@ -1,12 +1,9 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import classes from "./MainNavigation.module.css";
-import Player from "./Player";
-const tocadiscos = require("../../assets/img/lantube-tocadiscos.png");
+import { Link } from "react-router-dom"
+import classes from "./MainNavigation.module.css"
+import Player from "./Player"
+const tocadiscos = require("../../assets/img/lantube-tocadiscos.png")
 
 function MainNavigation(props: any) {
-  const [activeRoute, setActiveRoute] = useState("home");
-
   return (
     <header>
       <nav className="navbar navbar-expand navbar-light bg-light rounded-bottom">
@@ -47,7 +44,7 @@ function MainNavigation(props: any) {
         </div>
       </nav>
     </header>
-  );
+  )
 }
 
 export function NoMatch() {
@@ -58,7 +55,7 @@ export function NoMatch() {
         <Link to="/">Go to the home page</Link>
       </p>
     </div>
-  );
+  )
 }
 
-export default MainNavigation;
+export default MainNavigation
